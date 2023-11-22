@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { OrdersService } from '../../orders.service';
+import { OrdersService } from '../../services/orders.service';
 import { Order } from '../../interfaces/order.interface';
 
 @Component({
-  selector: 'app-orders-page',
-  templateUrl: './orders-page.component.html',
+  selector: 'shared-flowbite',
+  templateUrl: './flowbite.component.html',
   styles: [
   ]
 })
-export class OrdersPageComponent {
+export class FlowbiteComponent {
+
   orders: Order[] = [];
   //order: Order;
 
@@ -23,4 +24,5 @@ export class OrdersPageComponent {
       this.orders = orders;
     });
   }
+
 }

@@ -4,11 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FlowbiteComponent } from './flowbite/flowbite.component';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    FlowbiteComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   exports: [
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    FlowbiteComponent
   ],
 })
 

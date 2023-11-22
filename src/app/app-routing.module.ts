@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OrdersPageComponent } from './orders/pages/orders-page/orders-page.component';
-import { NewOrderPageComponent } from './orders/pages/new-order-page/new-order-page.component';
+import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthRoutingModule } from './auth/auth.routing';
+import { CreateOrderComponent } from './components/create-order/create-order.component';
 
 const routes: Routes = [
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'orders/new',
-    component: NewOrderPageComponent
+    component: CreateOrderComponent
   }
 ];
 

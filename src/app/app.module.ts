@@ -5,21 +5,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { OrdersModule } from './orders/orders.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
+import { CreateOrderComponent } from './components/create-order/create-order.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    CreateOrderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    OrdersModule,
+    ReactiveFormsModule,
     SharedModule,
     AuthModule,
     PagesModule

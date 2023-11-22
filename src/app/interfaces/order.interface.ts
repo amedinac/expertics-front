@@ -1,11 +1,13 @@
 export interface Order {
-  //_id: string;
+  id: number;
   serial: string;
   description: string;
   coverage: string;
   vmi: string;
   fail: string;
-  createdAt: Date;
+  createdAt?: Date;
+  user?: number;
+
   //updatedAt: Date;
   //__v: number;
 }
