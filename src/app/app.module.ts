@@ -11,12 +11,14 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormCustomerComponent } from './components/form-customer/form-customer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateOrderComponent
+    CreateOrderComponent,
+    FormCustomerComponent
   ],
   imports: [
     BrowserModule,

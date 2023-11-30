@@ -5,8 +5,9 @@ export interface Order {
   coverage: string;
   vmi: string;
   fail: string;
-  createdAt?: Date;
-  user?: number;
+  createdDate?: Date;
+  user: number;
+  customer: number;
 
   //updatedAt: Date;
   //__v: number;

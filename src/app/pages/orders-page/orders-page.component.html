@@ -52,25 +52,25 @@
               <label for="checkbox-all-search" class="sr-only">checkbox</label>
             </div>
           </th> -->
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 text-center">
             Id
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 text-center">
             Serial
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 text-center">
             Description
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 text-center">
             Coverage
           </th>
-          <th scope="col" class="px-6 py-3">
-            Created-At
+          <th scope="col" class="px-6 py-3 text-center">
+            Created Date
           </th>
-          <th scope="col" class="px-6 py-3">
-            User ID
+          <th scope="col" class="px-6 py-3 text-center">
+            User
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 text-center">
             Action
           </th>
         </tr>
@@ -85,24 +85,24 @@
               <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
             </div>
           </td> -->
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          <th scope="row" class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
             {{ order.id }}
           </th>
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          <th scope="row" class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
             {{ order.serial }}
           </th>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 text-center">
             {{ order.description }}
           </td>
-          <td class="px-6 py-4">
-            <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Limited Warranty</span>
-
-            <!-- {{ order.coverage }} -->
+          <td class="px-6 py-4 text-center">
+            <div *ngIf="order.coverage === 'Limited Warranty'" class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1.5 rounded-full dark:bg-green-900 dark:text-green-300">{{order.coverage}}</div>
+            <div *ngIf="order.coverage === 'Out of Warranty'" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-1.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">{{order.coverage}}</div>
+            <div *ngIf="order.coverage === 'AppleCare+'" class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-1.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">{{order.coverage}}</div>
           </td>
-          <td class="px-6 py-4">
-            {{ order.createdAt }}
+          <td class="px-6 py-4 text-center">
+            {{ order.createdDate | date:'d/M/yy  h:mm a':'-1200'}}
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 text-center">
             {{ order.user }}
           </td>
           <td class="px-6 py-4 flex">

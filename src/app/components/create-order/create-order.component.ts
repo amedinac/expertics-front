@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { OrdersService } from '../../services/orders.service';
 import { Order } from '../../interfaces/order.interface';
 import { Router, RouterLink } from '@angular/router';
@@ -13,21 +13,25 @@ import { Router, RouterLink } from '@angular/router';
 export class CreateOrderComponent {
 
   orders: Order[] = [];
-  //userLogged = 0;
-
-  orderForm = new FormGroup({
-    serial: new FormControl('C6KD72KMN739'),
-    description: new FormControl(''),
-    coverage: new FormControl(''),
-    vmi: new FormControl(''),
-    fail: new FormControl(''),
-    user: new FormControl(this.getUserId())
-  });
 
   constructor(
     private ordersService: OrdersService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) { }
+  //userLogged = 0;
+
+  public orderForm: FormGroup = this.fb.group({
+    serial: [],
+    description: [],
+    coverage: [],
+    vmi: [],
+    fail: [],
+    user: [this.getUserId()],
+    customer: [1]
+  });
+
+
 
   getUserId(){
     const token = localStorage.getItem('token') || '';

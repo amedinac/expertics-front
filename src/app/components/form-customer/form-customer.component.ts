@@ -1,0 +1,47 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { CustomerService } from '../../services/customer.service';
+import { Customer } from '../../interfaces/customer.interface';
+import { Router, RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'form-customer',
+  templateUrl: './form-customer.component.html',
+  styles: [
+  ]
+})
+export class FormCustomerComponent {
+
+  constructor(
+    private customerService: CustomerService,
+    private router: Router,
+    private fb: FormBuilder
+  ) { }
+
+  // orders: Order[] = [];
+  //userLogged = 0;
+
+  public customerForm = this.fb.group({
+    name: [],
+    email: [],
+    phone: []
+  });
+
+
+
+  // getUserId(){
+  //   const token = localStorage.getItem('token') || '';
+  //   var payload = JSON.parse(atob(token.split('.')[1]));
+  //   return payload.id;
+  // }
+
+  onSubmit(customerForm: FormGroup) {
+    this.customerService.createCustomer(customerForm.value)
+      .subscribe((customer) => {
+        //this.router.navigateByUrl('/orders');
+      });
+  }
+
+
+
+}
