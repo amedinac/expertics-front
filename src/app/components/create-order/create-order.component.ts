@@ -28,7 +28,7 @@ export class CreateOrderComponent {
     vmi: [],
     fail: [],
     user: [this.getUserId()],
-    customer: [1]
+    customer: [this.getCustomerId()]
   });
 
 
@@ -38,6 +38,11 @@ export class CreateOrderComponent {
     var payload = JSON.parse(atob(token.split('.')[1]));
     return payload.id;
   }
+
+  getCustomerId(){
+    const customerId = localStorage.getItem('customer') || '';
+    return JSON.parse(customerId);
+   }
 
   onSubmit(orderForm: FormGroup) {
     this.ordersService.createOrder(orderForm.value)

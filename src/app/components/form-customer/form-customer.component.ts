@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../services/customer.service';
 import { Customer } from '../../interfaces/customer.interface';
 import { Router, RouterLink } from '@angular/router';
+
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
+
 
 @Component({
   selector: 'form-customer',
@@ -12,14 +17,29 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class FormCustomerComponent {
 
+  private searchTerms = new Subject<string>();
+
   constructor(
     private customerService: CustomerService,
     private router: Router,
     private fb: FormBuilder
-  ) { }
+  ) {
+    this.searchTerms
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((term: string) => this.customerService.searchCustomer(term)),
+      )
+      .subscribe((results) => {
+        console.log(results);
+      });
+  }
 
-  // orders: Order[] = [];
-  //userLogged = 0;
+  searchCustomer(event: Event): void {
+    const element = event.currentTarget as HTMLInputElement;
+    this.searchTerms.next(element.value);
+  }
+
 
   public customerForm = this.fb.group({
     name: [],
@@ -34,11 +54,26 @@ export class FormCustomerComponent {
   //   var payload = JSON.parse(atob(token.split('.')[1]));
   //   return payload.id;
   // }
+  // searchCustomer(email:string) {
+  //   this.customerService.searchCustomer(email)
+  //     .subscribe(
+  //       customer => {
+  //         console.log(customer)
+  //         this.customerEmail = email;
+  //       }
+  //     )
+  // }
+
 
   onSubmit(customerForm: FormGroup) {
     this.customerService.createCustomer(customerForm.value)
       .subscribe((customer) => {
-        //this.router.navigateByUrl('/orders');
+          return
+      },
+      error => {
+        if (error.status === 400) {
+          this.customerForm.setErrors({ customerAlreadyExist: true })
+        }
       });
   }
 

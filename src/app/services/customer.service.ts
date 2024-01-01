@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Customer } from '../interfaces/customer.interface';
+import { Observable, tap } from 'rxjs';
 
 
 
@@ -13,9 +14,26 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  createCustomer(customer: Customer) {
-    //order.user = 1; // **Value hardcodeado*** -> Falta corregir que tome id de usuario que esta logeado.
-    console.log(customer)
+  get customer(): string {
+    return localStorage.getItem('customer') || '';
+  }
+
+  searchCustomer(query: string): Observable<any> {
+    const url = `${this.baseUrl}?query=${query}`;
+    return this.http.get(url)
+  }
+
+  createCustomer(customer: Customer){
     return this.http.post(this.baseUrl, customer)
+      .pipe(
+        tap((resp: any) => {
+          console.log(resp)
+          this.saveLocalStorage(resp.id)
+        })
+      )
+  }
+
+  saveLocalStorage(customer: string) {
+    localStorage.setItem('customer', customer);
   }
 }

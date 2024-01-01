@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { LoginForm } from '../../interfaces/login-form.interface';
-import { JsonPipe } from '@angular/common';
+// import { LoginForm } from '../../interfaces/login-form.interface';
+// import { JsonPipe } from '@angular/common';
 
 
 @Component({
