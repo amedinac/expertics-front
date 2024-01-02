@@ -5,7 +5,7 @@ import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthRoutingModule } from './auth/auth.routing';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
-import { FormCustomerComponent } from './components/form-customer/form-customer.component';
+import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 
 const routes: Routes = [
 
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'customers/new',
-    component: FormCustomerComponent
+    component: CreateCustomerComponent
   }
 ];
 

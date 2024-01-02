@@ -17,16 +17,15 @@ export class OrdersPageComponent {
   }
 
   deleteOrder(id:number){
-    this.ordersService.deleteOrder(id).subscribe(
-      () => {
-        console.log('ordern eliminada correctamente')
+    this.ordersService.deleteOrder(id).subscribe({
+      next: () => {
+        console.log('orden eliminada correctamente')
         location.reload();
       },
-      (error) => {
+      error:(error) => {
         console.log('Error al eliminar orden', error)
       }
-    );
-    console.log("desde OrdersPage.ts")
+  });
   }
 
   ngOnInit() {

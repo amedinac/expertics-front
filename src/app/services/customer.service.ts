@@ -2,38 +2,47 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Customer } from '../interfaces/customer.interface';
 import { Observable, tap } from 'rxjs';
-
+import { Router, RouterLink } from '@angular/router';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
-
   baseUrl = 'http://localhost:3000/api/customers';
 
-  constructor(private http: HttpClient) { }
+  customer$!: any;
 
-  get customer(): string {
-    return localStorage.getItem('customer') || '';
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router) {}
+
+  // get customer(): string {
+  //   return localStorage.getItem('customer') || '';
+  // }
 
   searchCustomer(query: string): Observable<any> {
     const url = `${this.baseUrl}?query=${query}`;
-    return this.http.get(url)
+    return this.http.get(url);
   }
 
-  createCustomer(customer: Customer){
-    return this.http.post(this.baseUrl, customer)
-      .pipe(
-        tap((resp: any) => {
-          console.log(resp)
-          this.saveLocalStorage(resp.id)
-        })
-      )
+  createCustomer(customer: Customer) {
+    return this.http.post(this.baseUrl, customer).subscribe({
+      next: (customer) => {
+        this.customer$ = customer;
+        console.log(this.customer$);
+        this.router.navigateByUrl('/orders/new');
+      },
+    });
+    // .pipe(
+    //   tap((resp: any) => {
+    //     this.customerId = resp.id
+    //     console.log(this.customerId)
+    //   })
+    // )
   }
 
-  saveLocalStorage(customer: string) {
-    localStorage.setItem('customer', customer);
-  }
+  // saveCustomer(customer: any) {
+  //   this.customerId = customer.id
+  // }
 }

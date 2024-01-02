@@ -23,7 +23,7 @@ export class OrdersService {
 
   deleteOrder(id: number){
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete(url)
-    console.log("usuario eliminado")
+    return this.http.delete(url);
+    console.log("Orden eliminada");
   }
 }

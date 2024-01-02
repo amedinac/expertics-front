@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { OrdersService } from '../../services/orders.service';
+import { CustomerService } from 'src/app/services/customer.service';
 import { Order } from '../../interfaces/order.interface';
 import { Router, RouterLink } from '@angular/router';
+import { Customer } from 'src/app/interfaces/customer.interface';
 
 @Component({
   selector: 'create-order',
@@ -10,16 +12,23 @@ import { Router, RouterLink } from '@angular/router';
   styles: [
   ]
 })
-export class CreateOrderComponent {
+export class CreateOrderComponent implements OnInit {
 
   orders: Order[] = [];
 
   constructor(
     private ordersService: OrdersService,
+    private customerService: CustomerService,
     private router: Router,
     private fb: FormBuilder
   ) { }
-  //userLogged = 0;
+
+  ngOnInit(): void {
+    console.log(this.customer)
+  }
+
+
+  public customer = this.customerService.customer$;
 
   public orderForm: FormGroup = this.fb.group({
     serial: [],
@@ -28,7 +37,7 @@ export class CreateOrderComponent {
     vmi: [],
     fail: [],
     user: [this.getUserId()],
-    customer: [this.getCustomerId()]
+    customer: [this.customer.id]
   });
 
 
@@ -39,14 +48,13 @@ export class CreateOrderComponent {
     return payload.id;
   }
 
-  getCustomerId(){
-    const customerId = localStorage.getItem('customer') || '';
-    return JSON.parse(customerId);
-   }
+  // getCustomerId(){
+  //   return customer$.id;
+  //  }
 
   onSubmit(orderForm: FormGroup) {
     this.ordersService.createOrder(orderForm.value)
-    .subscribe((order) => {
+    .subscribe(() => {
       this.router.navigateByUrl('/orders');
     });
   }
