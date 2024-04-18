@@ -41,5 +41,13 @@ export class CreateCustomerComponent {
   }
 
 
+  search(term: string):void {
+    this.customerService.searchCustomers(term)
+      .subscribe(customers => {
+        console.log(customers)
+        // this.customers = customers;
+      });
+  }
+
 
 }

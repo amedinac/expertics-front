@@ -30,7 +30,6 @@ export class OrdersPageComponent {
 
   ngOnInit() {
     this.ordersService.getOrders().subscribe((orders: Order[]) => {
-      console.log(orders);
       this.orders = orders;
     });
   }

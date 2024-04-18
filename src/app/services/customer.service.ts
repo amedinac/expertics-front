@@ -12,6 +12,7 @@ export class CustomerService {
   baseUrl = 'http://localhost:3000/api/customers';
 
   customer$!: any;
+  customersList$!: any;
 
   constructor(
     private http: HttpClient,
@@ -21,9 +22,10 @@ export class CustomerService {
   //   return localStorage.getItem('customer') || '';
   // }
 
-  searchCustomer(query: string): Observable<any> {
-    const url = `${this.baseUrl}?query=${query}`;
-    return this.http.get(url);
+  searchCustomers(query: string): Observable<Customer[]> {
+    const url = `${this.baseUrl}/search?email=${query}`;
+    console.log(url)
+    return this.http.get<Customer[]>(url);
   }
 
   createCustomer(customer: Customer) {
