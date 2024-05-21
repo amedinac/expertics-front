@@ -15,6 +15,7 @@ import { Customer } from 'src/app/interfaces/customer.interface';
 export class CreateOrderComponent implements OnInit {
 
   orders: Order[] = [];
+  customerId$ = this.customerService.customerId$;
 
   constructor(
     private ordersService: OrdersService,
@@ -24,11 +25,11 @@ export class CreateOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.customer)
+    console.log("desde ngOninit create order",this.customerId$)
   }
 
 
-  public customer = this.customerService.customer$;
+
 
   public orderForm: FormGroup = this.fb.group({
     serial: [],
@@ -37,7 +38,7 @@ export class CreateOrderComponent implements OnInit {
     vmi: [],
     fail: [],
     user: [this.getUserId()],
-    customer: [this.customer.id]
+    customer: [this.customerId$] // Aqui hay un error, tengo que acceder al ID de este objeto.
   });
 
 
@@ -48,14 +49,14 @@ export class CreateOrderComponent implements OnInit {
     return payload.id;
   }
 
-  // getCustomerId(){
-  //   return customer$.id;
-  //  }
+//   getCustomerId(){
+//    return this.customer.id;
+//  }
 
   onSubmit(orderForm: FormGroup) {
     this.ordersService.createOrder(orderForm.value)
     .subscribe(() => {
-      this.router.navigateByUrl('/orders');
+      this.router.navigateByUrl('/dashboard');
     });
   }
 

@@ -11,12 +11,12 @@ import { Router, RouterLink } from '@angular/router';
 export class CustomerService {
   baseUrl = 'http://localhost:3000/api/customers';
 
-  customer$!: any;
+  customerId$!: any;
   customersList$!: any;
 
   constructor(
     private http: HttpClient,
-    private router: Router) {}
+    private router: Router) { }
 
   // get customer(): string {
   //   return localStorage.getItem('customer') || '';
@@ -28,11 +28,19 @@ export class CustomerService {
     return this.http.get<Customer[]>(url);
   }
 
+  //Here is the error,
+  selectCustomer(customerId: any) {
+    console.log("Desde selectCustomer en customerService", customerId)
+    this.customerId$ = customerId;
+    console.log("Desde selectCustomer en customerService - Customer", this.customerId$)
+    this.router.navigateByUrl('/orders/new');
+  }
+
   createCustomer(customer: Customer) {
-    return this.http.post(this.baseUrl, customer).subscribe({
-      next: (customer) => {
-        this.customer$ = customer;
-        console.log(this.customer$);
+    this.http.post<Customer>(this.baseUrl, customer).subscribe({
+      next: (customer: Customer) => {
+        this.customerId$ = customer.id;
+        console.log(this.customerId$);
         this.router.navigateByUrl('/orders/new');
       },
     });

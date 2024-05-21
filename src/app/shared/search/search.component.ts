@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { of, fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { CustomerService } from '../../services/customer.service';
 import { HttpClient } from '@angular/common/http';
 import { Customer } from 'src/app/interfaces/customer.interface';
+import { initFlowbite } from 'flowbite';
 
 
 @Component({
@@ -12,8 +13,9 @@ import { Customer } from 'src/app/interfaces/customer.interface';
   templateUrl: './search.component.html'
 })
 
-export class SearchComponent  {
+export class SearchComponent implements OnInit {
   searchQuery = new FormControl('')
+  customerSelected: any = '';
   query = this.searchQuery.value?.toString()
   customers: Customer[] = [];
   searchQueryChanged: Subject<string> = new Subject<string>();
@@ -33,6 +35,16 @@ export class SearchComponent  {
       this.customers = customers;
       console.log("desde search", this.customers)
     })
+  }
+
+  getCustomerSelected(){
+    const id = Number(this.customerSelected)
+    this.customerService.selectCustomer(id)
+    console.log("Customer selected is", id)
+  }
+
+  ngOnInit(): void {
+    initFlowbite()
   }
 
   // ngOnInit(): void {

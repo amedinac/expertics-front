@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'shared-header',
@@ -6,6 +7,17 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+
+
+  ngOnInit(): void {
+    initFlowbite();
+  }
+
+  getUserPayload(){
+    const token = localStorage.getItem('token') || '';
+    var payload = JSON.parse(atob(token.split('.')[1]));
+    return payload;
+  }
 
 }
