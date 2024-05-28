@@ -34,7 +34,7 @@ export class CreateOrderComponent implements OnInit {
   public orderForm: FormGroup = this.fb.group({
     serial: [],
     description: [],
-    coverage: [],
+    coverage: [''],
     vmi: [],
     fail: [],
     user: [this.getUserId()],
@@ -43,11 +43,16 @@ export class CreateOrderComponent implements OnInit {
 
 
 
+
+
+
+
   getUserId(){
     const token = localStorage.getItem('token') || '';
     var payload = JSON.parse(atob(token.split('.')[1]));
     return payload.id;
   }
+
 
 //   getCustomerId(){
 //    return this.customer.id;

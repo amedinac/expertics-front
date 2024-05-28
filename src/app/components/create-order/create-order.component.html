@@ -12,8 +12,12 @@
           class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
           <span
             class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-            <span class="me-2">1</span>
-            Client <span class="hidden sm:inline-flex sm:ms-2">Info</span>
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+            </svg>
+            Customer <span class="hidden sm:inline-flex sm:ms-2">Info</span>
           </span>
         </li>
         <li
@@ -31,7 +35,7 @@
 
         <li class="flex items-center">
           <span class="me-2">3</span>
-          Confirmation
+          Resume
         </li>
       </ol>
 
@@ -42,7 +46,7 @@
   <section class="bg-white dark:bg-gray-900">
     <!-- <create-customer></create-customer> -->
     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-      <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Create a new order</h2>
+
       <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
@@ -64,7 +68,9 @@
                     <option value="GA">Homepod</option>
                 </select>
             </div> -->
-          <div>
+
+          <!-- Coverage selector-->
+          <!-- <div>
             <label for="coverage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Coverage</label>
             <select id="coverage" formControlName="coverage"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -73,7 +79,30 @@
               <option value="Out of Warranty">Out of Warranty</option>
               <option value="AppleCare+">AppleCare+</option>
             </select>
-          </div>
+          </div> -->
+
+
+
+          <!-- Coverage selector with radio-->
+
+          <div class="flex flex-col">
+            <div class="flex items-center me-4 pb-4 lg:pl-16 ">
+                <input id="green-radio" formControlName="coverage" type="radio" value="Limited Warranty" name="coverage" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="green-radio" class="ms-2 text-sm font-medium text-green-600 dark:text-gray-300">In Warranty</label>
+            </div>
+
+            <div class="flex items-center me-4 pb-4 lg:pl-16">
+                <input id="teal-radio" formControlName="coverage" type="radio" value="AppleCare+" name="coverage" class="w-4 h-4 text-blue-400 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="teal-radio" class="ms-2 text-sm font-medium text-blue-700 dark:text-gray-300">AppleCare+</label>
+            </div>
+            <div class="flex items-center me-4 pb-4 lg:pl-16">
+                <input id="yellow-radio" formControlName="coverage" type="radio" value="Out of Warranty" name="coverage" class="w-4 h-4 text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="yellow-radio" class="ms-2 text-sm font-medium text-yellow-400 dark:text-gray-300">Out of Warranty</label>
+            </div>
+
+        </div>
+
+
           <div class="sm:col-span-2">
             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
               Description</label>

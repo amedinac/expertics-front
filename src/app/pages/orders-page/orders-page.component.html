@@ -5,7 +5,7 @@
   <!--Table-->
 
   <div>
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 flex-col">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <!-- <th scope="col" class="p-4">
@@ -48,19 +48,19 @@
               <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
             </div>
           </td> -->
-          <th scope="row" class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          <th scope="row" class="px-6 py-4 text-center font-medium  text-gray-900 whitespace-nowrap dark:text-white">
             {{ order.id }}
           </th>
-          <th scope="row" class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          <th scope="row" class="px-6 py-4 text-center font-medium  text-gray-900 whitespace-nowrap dark:text-white">
             {{ order.serial }}
           </th>
           <td class="px-6 py-4 text-center">
             {{ order.description }}
           </td>
           <td class="px-6 py-4 text-center">
-            <div *ngIf="order.coverage === 'Limited Warranty'" class="border-2  bg-lime-50 border-lime-500  text-lime-900 text-xs font-medium me-2 px-2.5 py-1 rounded-full dark:bg-green-900 dark:text-green-300">{{order.coverage}}</div>
-            <div *ngIf="order.coverage === 'Out of Warranty'" class="border-2 bg-yellow-50 border-yellow-200 text-yellow-900 text-xs font-medium me-2 px-2.5 py-1 rounded-full dark:bg-yellow-900 dark:text-yellow-300">{{order.coverage}}</div>
-            <div *ngIf="order.coverage === 'AppleCare+'" class="border-2 bg-gray-50 border-primary-700 text-sky-900 text-xs font-medium me-2 px-2.5 py-1 rounded-full dark:bg-indigo-900 dark:text-indigo-300">{{order.coverage}}</div>
+            <div *ngIf="order.coverage === 'Limited Warranty'" class="me-2 mt-1.5 inline-flex items-center rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">{{order.coverage}}</div>
+            <div *ngIf="order.coverage === 'Out of Warranty'" class="me-2 mt-1.5 inline-flex items-center rounded bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">{{order.coverage}}</div>
+            <div *ngIf="order.coverage === 'AppleCare+'" class="me-2 mt-1.5 inline-flex items-center rounded bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300">{{order.coverage}}</div>
           </td>
           <td class="px-6 py-4 text-center">
             {{ order.createdDate | date:'dd/MM/yy  hh:mm a':'-1200'}}

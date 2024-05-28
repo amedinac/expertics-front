@@ -28,7 +28,7 @@ export class CustomerService {
     return this.http.get<Customer[]>(url);
   }
 
-  //Here is the error,
+
   selectCustomer(customerId: any) {
     console.log("Desde selectCustomer en customerService", customerId)
     this.customerId$ = customerId;
@@ -43,6 +43,11 @@ export class CustomerService {
         console.log(this.customerId$);
         this.router.navigateByUrl('/orders/new');
       },
+      error: (error) => {
+        if (error.status === 400) {
+
+        }
+      }
     });
     // .pipe(
     //   tap((resp: any) => {
