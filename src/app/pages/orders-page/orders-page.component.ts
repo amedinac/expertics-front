@@ -9,7 +9,10 @@ import { Order } from '../../interfaces/order.interface';
   ]
 })
 export class OrdersPageComponent {
-  orders: Order[] = [];
+  public orders: Order[] = [];
+  public totalOrders: number = 0;
+  public offset: number = 0;
+  public limit : number = 5;
 
   constructor(private ordersService: OrdersService) {
     //this.orders = [];
@@ -28,9 +31,28 @@ export class OrdersPageComponent {
   });
   }
 
-  ngOnInit() {
-    this.ordersService.getOrders().subscribe((orders: Order[]) => {
-      this.orders = orders;
+  ngOnInit(): void {
+    this.getOrders();
+  }
+
+  getOrders() {
+    this.ordersService.getOrders(this.limit, this.offset).subscribe((response) => {
+      this.orders = response.data;
+      this.totalOrders = response.total;
+      console.log(this.orders)
     });
   }
+
+  nextPage(value: number){
+    this.offset += value;
+    this.getOrders();
+    console.log(this.offset)
+  }
+
+  prevPage(value: number){
+    this.offset -= value;
+    this.getOrders();
+    console.log(this.offset)
+  }
+
 }

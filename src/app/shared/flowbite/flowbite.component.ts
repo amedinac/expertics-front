@@ -18,11 +18,11 @@ export class FlowbiteComponent {
     //this.order = {  serial: 'C02XL', description: '', coverage: '', vmi: '', fail: '' };
   }
 
-  ngOnInit() {
-    this.ordersService.getOrders().subscribe((orders: Order[]) => {
-      console.log(orders);
-      this.orders = orders;
-    });
-  }
+  // ngOnInit() {
+  //   this.ordersService.getOrders().subscribe((orders: Order[]) => {
+  //     console.log(orders);
+  //     this.orders = orders;
+  //   });
+  // }
 
 }
