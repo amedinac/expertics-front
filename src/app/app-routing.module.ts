@@ -6,14 +6,17 @@ import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthRoutingModule } from './auth/auth.routing';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
-
+  //usar para redirigir a /login y usar child routes.
   { path: '', redirectTo: '/login', pathMatch:'full'},
 
   //{ path: '**', component: NotFoundComponent}
-
-
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'orders',
     component: OrdersPageComponent

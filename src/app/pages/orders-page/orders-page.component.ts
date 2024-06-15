@@ -12,7 +12,7 @@ export class OrdersPageComponent {
   public orders: Order[] = [];
   public totalOrders: number = 0;
   public offset: number = 0;
-  public limit : number = 5;
+  public limit : number = 10;
 
   constructor(private ordersService: OrdersService) {
     //this.orders = [];

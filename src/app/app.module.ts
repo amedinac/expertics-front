@@ -32,4 +32,5 @@ import { CreateCustomerComponent } from './components/create-customer/create-cus
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
