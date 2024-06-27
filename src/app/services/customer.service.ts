@@ -36,28 +36,42 @@ export class CustomerService {
     this.router.navigateByUrl('/orders/new');
   }
 
-  createCustomer(customer: Customer) {
-    this.http.post<Customer>(this.baseUrl, customer).subscribe({
-      next: (customer: Customer) => {
-        this.customerId$ = customer.id;
+  createCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post(this.baseUrl, customer)
+      .pipe(
+        tap((resp: any) => {
+          this.customerId$ = customer.id;
         console.log(this.customerId$);
         this.router.navigateByUrl('/orders/new');
-      },
-      error: (error) => {
-        if (error.status === 400) {
+        })
+      )
+    }
 
-        }
-      }
-    });
+  }
+      // )
+
+
+
+    // }  ({
+    //   next: (customer: Customer) => {
+    //     this.customerId$ = customer.id;
+    //     console.log(this.customerId$);
+    //     this.router.navigateByUrl('/orders/new');
+    //   },
+    //   error: (error) => {
+    //     if (error.status === 400) {
+    //       console.log(error)
+    //     }
+    //   });
     // .pipe(
     //   tap((resp: any) => {
     //     this.customerId = resp.id
     //     console.log(this.customerId)
     //   })
     // )
-  }
+  // }
 
   // saveCustomer(customer: any) {
   //   this.customerId = customer.id
   // }
-}
+

@@ -14,30 +14,33 @@ import { Router, RouterLink } from '@angular/router';
 export class CreateCustomerComponent {
 
   constructor(
-    private customerService: CustomerService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private customerService: CustomerService
   ) { }
 
   // orders: Order[] = [];
   //userLogged = 0;
 
-  public customerForm = this.fb.group({
+  public customerForm: FormGroup = this.fb.group({
     name: [],
     email: [],
     phone: []
   });
 
-
-
-  // getUserId(){
-  //   const token = localStorage.getItem('token') || '';
-  //   var payload = JSON.parse(atob(token.split('.')[1]));
-  //   return payload.id;
-  // }
-
-  onSubmit(customerForm: FormGroup) {
-    this.customerService.createCustomer(customerForm.value)
+  createCustomer() {
+    this.customerService.createCustomer(this.customerForm.value)
+      .subscribe(
+        resp => {
+          console.log(resp)
+        },
+        error => {
+          if (error.status === 400){
+            this.customerForm.setErrors({ alreadyRegister: true})
+            console.log("desde excepcion error cliente ya existe")
+          }
+        }
+      )
   }
 
 
@@ -48,6 +51,14 @@ export class CreateCustomerComponent {
         // this.customers = customers;
       });
   }
+
+
+
+    // getUserId(){
+  //   const token = localStorage.getItem('token') || '';
+  //   var payload = JSON.parse(atob(token.split('.')[1]));
+  //   return payload.id;
+  // }
 
 
 }
