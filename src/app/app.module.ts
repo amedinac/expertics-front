@@ -12,13 +12,14 @@ import { PagesModule } from './pages/pages.module';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateOrderComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
   ],
   imports: [
     BrowserModule,

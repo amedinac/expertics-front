@@ -1,0 +1,134 @@
+<shared-header></shared-header>
+<div class="m-10">
+  <div class="flex flex-col px-4 sm:px-0">
+    <p class="text-2xl font-semibold text-gray-900 ml-auto">Order #{{order.id}}</p>
+    <p class="text-sm/6 text-gray-500 mb-2 ml-auto">Received at: {{ order.createdDate | date:'dd/MM/yy hh:mm
+      a':'-1200'}}
+    </p>
+    <button (click)="getPdf()" type="button"
+      class="flex text-white bg-gradient-to-br from-cyan-600 to-blue-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-1 text-center me-2 mb-2 ml-auto">
+      <svg class="w-[24px] h-[24px] text-white-800 dark:text-white" aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1"
+          d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01" />
+      </svg>
+
+
+      <span class="pl-2 pt-0.5">
+        Download Pdf
+      </span>
+    </button>
+
+  </div>
+
+  <div>
+    <!-- Customer info -->
+    <div class="px-4 sm:px-0 mt-6">
+      <p class="mt-1 pl-1 max-w-2xl text-sm/6 text-gray-500">Customer info</p>
+    </div>
+    <div class="border-2 rounded-lg p-5 border-gray-200">
+      <dl class="divide-y divide-gray-100">
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Name</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.customer.name}}</dd>
+        </div>
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Email</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.customer.email}}</dd>
+        </div>
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Phone Number</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.customer.phone}}</dd>
+        </div>
+
+
+      </dl>
+
+      <div class="flex justify-items-end">
+        <update-customer class="ml-auto"></update-customer>
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- Device info -->
+    <div class="px-4 sm:px-0 mt-6">
+      <p class="mt-1 pl-1 max-w-2xl text-sm/6 text-gray-500">Device info</p>
+    </div>
+
+    <div class="border-2 rounded-lg p-5 border-gray-100">
+      <dl class="divide-y divide-gray-100">
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Serial</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.serial}}</dd>
+        </div>
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Description</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.description}}</dd>
+        </div>
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Coverage</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.coverage}}</dd>
+        </div>
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Condition of the device</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.vmi}}</dd>
+        </div>
+        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Fail</dt>
+          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.fail}}</dd>
+        </div>
+        <div class="px-4 py-1 mt-20 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm/6 font-medium text-gray-900">Attachments</dt>
+          <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+            <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm/6">
+                <div class="flex w-0 flex-1 items-center">
+                  <svg class="h-5 w-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                    data-slot="icon">
+                    <path fill-rule="evenodd"
+                      d="M15.621 4.379a3 3 0 0 0-4.242 0l-7 7a3 3 0 0 0 4.241 4.243h.001l.497-.5a.75.75 0 0 1 1.064 1.057l-.498.501-.002.002a4.5 4.5 0 0 1-6.364-6.364l7-7a4.5 4.5 0 0 1 6.368 6.36l-3.455 3.553A2.625 2.625 0 1 1 9.52 9.52l3.45-3.451a.75.75 0 1 1 1.061 1.06l-3.45 3.451a1.125 1.125 0 0 0 1.587 1.595l3.454-3.553a3 3 0 0 0 0-4.242Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate font-medium">{{order.serial}}</span>
+                    <span class="shrink-0 text-gray-400">2.4mb</span>
+                  </div>
+                </div>
+                <div class="ml-4 shrink-0">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                </div>
+              </li>
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm/6">
+                <div class="flex w-0 flex-1 items-center">
+                  <svg class="h-5 w-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                    data-slot="icon">
+                    <path fill-rule="evenodd"
+                      d="M15.621 4.379a3 3 0 0 0-4.242 0l-7 7a3 3 0 0 0 4.241 4.243h.001l.497-.5a.75.75 0 0 1 1.064 1.057l-.498.501-.002.002a4.5 4.5 0 0 1-6.364-6.364l7-7a4.5 4.5 0 0 1 6.368 6.36l-3.455 3.553A2.625 2.625 0 1 1 9.52 9.52l3.45-3.451a.75.75 0 1 1 1.061 1.06l-3.45 3.451a1.125 1.125 0 0 0 1.587 1.595l3.454-3.553a3 3 0 0 0 0-4.242Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate font-medium">{{order.serial}}</span>
+                    <span class="shrink-0 text-gray-400">4.5mb</span>
+                  </div>
+                </div>
+                <div class="ml-4 shrink-0">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                </div>
+              </li>
+            </ul>
+          </dd>
+        </div>
+
+
+      </dl>
+    </div>
+
+
+
+  </div>
+
+</div>

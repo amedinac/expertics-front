@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Order } from '../interfaces/order.interface';
 
@@ -21,6 +23,11 @@ export class OrdersService {
   //   const url = `${this.baseUrl}/?limit=${limit}&offset=${offset}`
   //   return this.http.get<Order[]>(url)
   // }
+
+  getOrder(id: string) {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get(url);
+  }
 
   getOrders(limit: number, offset: number): Observable<ApiResponse<Order>> {
     const url = `${this.baseUrl}/?limit=${limit}&offset=${offset}`

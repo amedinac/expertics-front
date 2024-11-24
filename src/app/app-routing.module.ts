@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth/auth.routing';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { LoginComponent } from './auth/login/login.component';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 
 const routes: Routes = [
   //usar para redirigir a /login y usar child routes.
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'orders/new',
     component: CreateOrderComponent
+  },
+  {
+    path: 'orders/:id',
+    component: OrderDetailComponent
   },
   {
     path: 'customers/new',

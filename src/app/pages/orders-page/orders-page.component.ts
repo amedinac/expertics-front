@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OrdersService } from '../../services/orders.service';
 import { Order } from '../../interfaces/order.interface';
+import { PdfService } from 'src/app/services/pdf.service';
 
 @Component({
   selector: 'orders-page',
@@ -13,10 +14,19 @@ export class OrdersPageComponent {
   public totalOrders: number = 0;
   public offset: number = 0;
   public limit : number = 10;
+  public order: any;
 
-  constructor(private ordersService: OrdersService) {
+
+  constructor(
+    private ordersService: OrdersService,
+    private pdfService: PdfService
+  ) {
     //this.orders = [];
     //this.order = {  serial: 'C02XL', description: '', coverage: '', vmi: '', fail: '' };
+  }
+
+  ngOnInit(): void {
+    this.getOrders();
   }
 
   deleteOrder(id:number){
@@ -31,9 +41,16 @@ export class OrdersPageComponent {
   });
   }
 
-  ngOnInit(): void {
-    this.getOrders();
+
+  getPdf(id: number){
+    this.pdfService.getPdf(id).subscribe({
+      next: (blob) => {
+        this.pdfService.openPdfInNewTab(id)
+      }
+    })
   }
+
+
 
   getOrders() {
     this.ordersService.getOrders(this.limit, this.offset).subscribe((response) => {
@@ -54,5 +71,6 @@ export class OrdersPageComponent {
     this.getOrders();
     console.log(this.offset)
   }
+
 
 }

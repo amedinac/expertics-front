@@ -39,7 +39,7 @@ export class CustomerService {
   createCustomer(customer: Customer): Observable<Customer> {
     return this.http.post(this.baseUrl, customer)
       .pipe(
-        tap((resp: any) => {
+        tap((customer: any) => {
           this.customerId$ = customer.id;
         console.log(this.customerId$);
         this.router.navigateByUrl('/orders/new');

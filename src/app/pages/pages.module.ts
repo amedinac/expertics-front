@@ -9,13 +9,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from '../shared/header/header.component';
 import { OrdersPageComponent } from './orders-page/orders-page.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { UpdateCustomerComponent } from '../components/update-customer/update-customer.component';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
     DashboardComponent,
-    OrdersPageComponent
+    OrdersPageComponent,
+    OrderDetailComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     CommonModule,
