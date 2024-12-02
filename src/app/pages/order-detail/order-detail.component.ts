@@ -13,7 +13,7 @@ import { PdfService } from 'src/app/services/pdf.service';
 
 export class OrderDetailComponent implements OnInit {
 
-  //Typar correctemente.
+  //Typar correctamente.
   public order: any;
 
   constructor(
@@ -42,6 +42,24 @@ export class OrderDetailComponent implements OnInit {
         this.pdfService.openPdfInNewTab(this.order.id)
       }
     })
+  }
+
+  openUpdateCustomerModal(order: any) {
+    this.order = order;
+  }
+
+  onCustomerUpdated(success: boolean) {
+    if (success) {
+      this.loadOrderDetails(this.order.id);
+    }
+  }
+
+  loadOrderDetails(orderId: string) {
+    this.orderService.getOrder(orderId).subscribe(
+      (updatedOrder) => {
+        this.order = updatedOrder;
+      }
+    );
   }
 
 
