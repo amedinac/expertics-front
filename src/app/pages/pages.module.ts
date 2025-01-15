@@ -11,6 +11,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { OrdersPageComponent } from './orders-page/orders-page.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { UpdateCustomerComponent } from '../components/update-customer/update-customer.component';
+import { QuoteComponent } from './quote/quote.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UpdateCustomerComponent } from '../components/update-customer/update-cu
     DashboardComponent,
     OrdersPageComponent,
     OrderDetailComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    QuoteComponent
   ],
   imports: [
     CommonModule,

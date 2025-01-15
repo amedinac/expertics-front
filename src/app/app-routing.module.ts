@@ -8,6 +8,7 @@ import { CreateOrderComponent } from './components/create-order/create-order.com
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { QuoteComponent } from './pages/quote/quote.component';
 
 const routes: Routes = [
   //usar para redirigir a /login y usar child routes.
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'customers/new',
     component: CreateCustomerComponent
+  },
+  {
+    path: 'quote/:id',
+    component: QuoteComponent
   }
 ];
 
