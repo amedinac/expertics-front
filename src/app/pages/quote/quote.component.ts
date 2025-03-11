@@ -34,6 +34,17 @@ export class QuoteComponent implements OnInit {
     })
   }
 
+  deleteDetailQuote(id:number) {
+    this.quoteService.deleteQuoteDetail(id).subscribe({
+      next: () => {
+        location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+
 
 
 

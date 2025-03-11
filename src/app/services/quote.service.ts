@@ -24,4 +24,10 @@ export class QuoteService {
     return this.http.post(url, quoteDetail)
   }
 
+  deleteQuoteDetail(id: number){
+      const url = `${this.baseUrl}detail_quote/${id}`
+      return this.http.delete(url)
+      console.log('Detail Quote deleted', id)
+  }
+
 }

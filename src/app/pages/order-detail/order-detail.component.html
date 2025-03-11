@@ -1,10 +1,9 @@
 <!-- <shared-header></shared-header> -->
 
 <div class="m-10">
-  <div class="flex flex-col px-4 sm:px-0">
+  <div class="flex flex-col px-4 mb-10 sm:px-0">
     <p class="text-2xl font-semibold text-gray-900 ml-auto">Order #{{order.id}}</p>
-    <p class="text-sm/6 text-gray-500 mb-2 ml-auto">Received at: {{ order.createdDate | date:'dd/MM/yy hh:mm
-      a':'-1200'}}
+    <p class="text-sm/6 text-gray-500 mb-2 ml-auto">Received at: {{ order.createdDate | date:'dd/MM/yy hh:mma':'-1200'}}
     </p>
     <button (click)="getPdf()" type="button"
       class="flex text-white bg-gradient-to-br from-cyan-600 to-blue-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-1 text-center me-2 mb-2 ml-auto">
@@ -22,86 +21,36 @@
 
   </div>
 
-  <div>
-    <!-- Customer info -->
-    <div class="px-4 sm:px-0 mt-6">
-      <p class="mt-1 pl-1 max-w-2xl text-sm/6 text-gray-500">Customer info</p>
-    </div>
-    <div class="border-2 rounded-lg p-5 border-gray-200">
-    <!--
-      <dl class="divide-y divide-gray-100">
-        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Name</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.customer.name}}</dd>
-        </div>
-        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Email</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.customer.email}}</dd>
-        </div>
-        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Phone Number</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.customer.phone}}</dd>
-        </div>
+  <div class="flex gap-6">
 
-
-      </dl> -->
-
-
-      <div class="p-4 md:w-1/3 flex">
-  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-blue-100 text-blue-500 mb-4 flex-shrink-0">
-    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
-      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-      <circle cx="12" cy="7" r="4"></circle>
-    </svg>
-  </div>
-  <div class="flex-grow pl-6">
-
-    <h2 class="text-gray-900 text-lg title-font font-medium mb-2">{{order.customer?.name}}</h2>
-    <p class="leading-relaxed text-base">{{order.customer?.email}}</p>
-    <p class="leading-relaxed text-base">{{order.customer?.phone}}</p>
-
-  </div>
-</div>
-
-
-
-      <div class="flex justify-items-end">
-        <update-customer [order]="order" (customerUpdated)="onCustomerUpdated($event)" class="ml-auto"></update-customer>
-      </div>
-
-    </div>
-
-
-
-
-
-    <!--Device info -->
-    <div class="px-4 sm:px-0 mt-6">
+     <!--Device info -->
+     <div class="border-2 rounded-lg p-3 border-gray-200 w-2/3">
+      <div class="px-4 sm:px-0">
       <p class="mt-1 pl-1 max-w-2xl text-sm/6 text-gray-500">Device info</p>
     </div>
-
-    <div class="border-2 rounded-lg p-5 border-gray-100">
       <dl class="divide-y divide-gray-100">
-        <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Serial</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.serial}}</dd>
+        <div class="px-4 mt-1 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium text-gray-900">Serial</dt>
+          <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{order.serial}}</dd>
         </div>
         <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Description</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.description}}</dd>
+          <dt class="text-sm font-medium text-gray-900">Description</dt>
+          <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{order.description}}</dd>
         </div>
         <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Coverage</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.coverage}}</dd>
+          <dt class="text-sm font-medium text-gray-900">Coverage</dt>
+          <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{order.coverage}}</dd>
         </div>
         <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Condition of the device</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.vmi}}</dd>
+          <dt class="text-sm font-medium text-gray-900">Condition of the device</dt>
+          <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{order.vmi}}</dd>
         </div>
         <div class="px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt class="text-sm/6 font-medium text-gray-900">Fail</dt>
-          <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{order.fail}}</dd>
+          <dt class="text-sm font-medium text-gray-900">Fail</dt>
+          <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{order.fail}}</dd>
         </div>
+
+        <!-- Attachments
         <div class="px-4 py-1 mt-20 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm/6 font-medium text-gray-900">Attachments</dt>
           <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
@@ -142,16 +91,41 @@
               </li>
             </ul>
           </dd>
-        </div>
+        </div> -->
 
 
       </dl>
     </div>
 
+    <!-- Customer info -->
+    <div class="border-2 rounded-lg p-3 border-gray-200 w-1/3 h-1/2">
 
+      <div class="px-4 sm:px-0">
+      <p class="pl-1 max-w-2xl text-sm/6 text-gray-500">Customer info</p>
+      </div>
+      <div class="p-2 flex">
+        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-blue-100 text-blue-500 mb-4 flex-shrink-0">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="flex-grow pl-6">
 
+          <h2 class="text-gray-900 text-base title-font font-medium">{{order.customer?.name}}</h2>
+          <p class="text-gray-600 leading-relaxed text-sm">{{order.customer?.email}}</p>
+          <p class="text-gray-600 leading-relaxed text-sm">{{order.customer?.phone}}</p>
+          <div class="flex justify-items-end">
+            <update-customer [order]="order" (customerUpdated)="onCustomerUpdated($event)" class="ml-auto"></update-customer>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   </div>
+
+
+  <quote></quote>
 
 </div>

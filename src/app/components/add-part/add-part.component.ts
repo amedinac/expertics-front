@@ -32,12 +32,14 @@ export class AddPartComponent {
     const { id } = this.part;
     const newQuoteDetail = {
       part: id,
-      coverage: 'AppleCare+',
-      quote: 1
+      coverage: 'Limited Warranty',
+      quote: 5
     }
 
     this.quoteService.addQuoteDetail(newQuoteDetail)
       .subscribe()
+
+      location.reload();
   }
 
 }
