@@ -17,6 +17,9 @@ interface ApiResponse<T> {
 export class OrdersService {
   baseUrl = 'http://localhost:3000/api/orders';
 
+  orderId$!: string;
+
+
   constructor(private http: HttpClient) { }
 
   // getOrders(limit: number, offset: number): Observable<Order[]> {
@@ -26,6 +29,7 @@ export class OrdersService {
 
   getOrder(id: string) {
     const url = `${this.baseUrl}/${id}`
+    this.orderId$ = id;
     return this.http.get(url);
   }
 

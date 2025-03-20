@@ -13,6 +13,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { UpdateCustomerComponent } from '../components/update-customer/update-customer.component';
 import { QuoteComponent } from './quote/quote.component';
 import { AddPartComponent } from '../components/add-part/add-part.component';
+import { DeviceCardComponent } from '../components/device-card/device-card.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AddPartComponent } from '../components/add-part/add-part.component';
     OrderDetailComponent,
     UpdateCustomerComponent,
     QuoteComponent,
-    AddPartComponent
+    AddPartComponent,
+    DeviceCardComponent
   ],
   imports: [
     CommonModule,

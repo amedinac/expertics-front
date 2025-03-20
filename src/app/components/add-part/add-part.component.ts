@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Part } from 'src/app/interfaces/part.interface';
 import { DetailQuote } from 'src/app/interfaces/detail-quote.interface';
