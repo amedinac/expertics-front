@@ -10,6 +10,7 @@ import { QuoteService } from 'src/app/services/quote.service';
 })
 export class QuoteComponent implements OnInit {
   public quote!: Quote;
+  public quoteId!: number;
   public detailsQuote!: DetailQuote[];
 
   constructor(
@@ -29,6 +30,7 @@ export class QuoteComponent implements OnInit {
     this.quoteService.getQuote(quoteid).subscribe(data => {
 
       this.quote = data as Quote;
+      this.quoteId = this.quote.id;
       this.detailsQuote = data.detailsQuote;
       console.log(this.detailsQuote)
     })
@@ -44,9 +46,5 @@ export class QuoteComponent implements OnInit {
       }
     })
   }
-
-
-
-
 
 }

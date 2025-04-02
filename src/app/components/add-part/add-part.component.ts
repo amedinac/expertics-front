@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Part } from 'src/app/interfaces/part.interface';
 import { DetailQuote } from 'src/app/interfaces/detail-quote.interface';
@@ -13,6 +13,7 @@ import { QuoteService } from 'src/app/services/quote.service';
 export class AddPartComponent {
   searchQuery = new FormControl('');
   part: any = '';
+  @Input() quoteId!: number;
 
   constructor(
     private partsService: PartsService,
@@ -33,7 +34,7 @@ export class AddPartComponent {
     const newQuoteDetail = {
       part: id,
       coverage: 'Limited Warranty',
-      quote: 5
+      quote: this.quoteId
     }
 
     this.quoteService.addQuoteDetail(newQuoteDetail)

@@ -14,6 +14,7 @@ import { UpdateCustomerComponent } from '../components/update-customer/update-cu
 import { QuoteComponent } from './quote/quote.component';
 import { AddPartComponent } from '../components/add-part/add-part.component';
 import { DeviceCardComponent } from '../components/device-card/device-card.component';
+import { ClientCardComponent } from '../components/client-card/client-card.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DeviceCardComponent } from '../components/device-card/device-card.compo
     UpdateCustomerComponent,
     QuoteComponent,
     AddPartComponent,
-    DeviceCardComponent
+    DeviceCardComponent,
+    ClientCardComponent
   ],
   imports: [
     CommonModule,

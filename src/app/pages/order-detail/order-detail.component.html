@@ -1,12 +1,13 @@
-<!-- <shared-header></shared-header> -->
 
-<div class="m-10">
-  <div class="flex flex-col px-4 mb-10 sm:px-0">
+
+<div class="flex flex-col mt-5 mx-20 max-w-screen-2xl">
+  <shared-header/>
+  <div class="flex flex-col mb-10 sm:px-0">
     <p class="text-2xl font-semibold text-gray-900 ml-auto">Order #{{order.id}}</p>
     <p class="text-sm/6 text-gray-500 mb-2 ml-auto">Received at: {{ order.createdDate | date:'dd/MM/yy hh:mma':'-1200'}}
     </p>
     <button (click)="getPdf()" type="button"
-      class="flex text-white bg-gradient-to-br from-cyan-600 to-blue-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-1 text-center me-2 mb-2 ml-auto">
+      class="flex rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 ml-auto">
       <svg class="w-[24px] h-[24px] text-white-800 dark:text-white" aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1"
@@ -21,42 +22,19 @@
 
   </div>
 
-  <div class="flex gap-20 justify-center">
+  <div class="flex justify-between">
 
     <!-- Device info -->
     <device-card/>
 
-     <!-- Customer info -->
-     <div class="py-5 px-10 bg-gray-50 shadow-md sm:rounded-lg">
-
-      <div class="sm:px-0">
-      <p class="max-w-2xl text-sm/6 text-gray-500">Customer info</p>
-      </div>
-      <div class="p-2 flex">
-        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-blue-100 text-blue-500 mb-4 flex-shrink-0">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-        </div>
-        <div class="flex-grow pl-6">
-
-          <h2 class="text-gray-900 text-base title-font font-medium">{{order.customer?.name}}</h2>
-          <p class="text-gray-600 leading-relaxed text-sm">{{order.customer?.email}}</p>
-          <p class="text-gray-600 leading-relaxed text-sm">{{order.customer?.phone}}</p>
-
-        </div>
-
-      </div>
-      <!-- <div class="flex ml-60">
-        <update-customer [order]="order" (customerUpdated)="onCustomerUpdated($event)" class=""></update-customer>
-      </div> -->
-    </div>
-
+     <!-- Client info -->
+    <client-card/>
 
   </div>
 
 
   <quote/>
+
+
 
 </div>
