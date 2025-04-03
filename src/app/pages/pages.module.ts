@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PagesRoutingModule } from './pages.routing';
-import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from '../shared/header/header.component';
@@ -19,7 +18,6 @@ import { ClientCardComponent } from '../components/client-card/client-card.compo
 
 @NgModule({
   declarations: [
-    PagesComponent,
     DashboardComponent,
     OrdersPageComponent,
     OrderDetailComponent,
