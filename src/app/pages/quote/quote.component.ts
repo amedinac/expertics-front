@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailQuote } from 'src/app/interfaces/detail-quote.interface';
 import { Quote } from 'src/app/interfaces/quote.interface';
@@ -9,8 +9,12 @@ import { QuoteService } from 'src/app/services/quote.service';
   templateUrl: './quote.component.html',
 })
 export class QuoteComponent implements OnInit {
+
   public quote!: Quote;
-  public quoteId!: number;
+  public quoteId!: string;
+  public subtotal!: number;
+  public tax!: number;
+  public total!: number;
   public detailsQuote!: DetailQuote[];
 
   constructor(
@@ -26,13 +30,16 @@ export class QuoteComponent implements OnInit {
 
 
   getQuote() {
-    const quoteid = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.quoteService.getQuote(quoteid).subscribe(data => {
+    // const quoteid = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    this.quoteService.getQuote(this.quoteId).subscribe(data => {
 
       this.quote = data as Quote;
-      this.quoteId = this.quote.id;
+      this.quoteId = data.id;
       this.detailsQuote = data.detailsQuote;
-      console.log(this.detailsQuote)
+      this.subtotal = data.subtotal;
+      this.tax = data.tax;
+      this.total = data.total;
+      console.log(this.quote);
     })
   }
 

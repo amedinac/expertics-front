@@ -7,7 +7,7 @@ export interface Order {
   fail: string;
   createdDate?: Date;
   user: number;
-  customer: number;
+  client: number;
 
   //updatedAt: Date;
   //__v: number;

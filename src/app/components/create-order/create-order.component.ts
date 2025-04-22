@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { OrdersService } from '../../services/orders.service';
-import { CustomerService } from 'src/app/services/customer.service';
+import { ClientService } from 'src/app/services/client.service';
 import { Order } from '../../interfaces/order.interface';
 import { Router, RouterLink } from '@angular/router';
-import { Customer } from 'src/app/interfaces/customer.interface';
+import { Client } from 'src/app/interfaces/client.interface';
 
 @Component({
   selector: 'create-order',
@@ -15,17 +15,17 @@ import { Customer } from 'src/app/interfaces/customer.interface';
 export class CreateOrderComponent implements OnInit {
 
   orders: Order[] = [];
-  customerId$ = this.customerService.customerId$;
+  clientId$ = this.clientService.clientId$;
 
   constructor(
     private ordersService: OrdersService,
-    private customerService: CustomerService,
+    private clientService: ClientService,
     private router: Router,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    console.log("desde ngOninit create order",this.customerId$)
+    console.log("desde ngOninit create order",this.clientId$)
   }
 
 
@@ -38,7 +38,7 @@ export class CreateOrderComponent implements OnInit {
     vmi: [],
     fail: [],
     user: [this.getUserId()],
-    customer: [this.customerId$] // Aqui hay un error, tengo que acceder al ID de este objeto.
+    client: [this.clientId$] // Aqui hay un error, tengo que acceder al ID de este objeto.
   });
 
 

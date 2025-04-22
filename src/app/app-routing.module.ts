@@ -5,7 +5,7 @@ import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthRoutingModule } from './auth/auth.routing';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
-import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { CreateClientComponent } from './components/create-client/create-client.component';
 import { LoginComponent } from './auth/login/login.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { QuoteComponent } from './pages/quote/quote.component';
@@ -32,8 +32,8 @@ const routes: Routes = [
     component: OrderDetailComponent
   },
   {
-    path: 'customers/new',
-    component: CreateCustomerComponent
+    path: 'clients/new',
+    component: CreateClientComponent
   },
   {
     path: 'quote/:id',

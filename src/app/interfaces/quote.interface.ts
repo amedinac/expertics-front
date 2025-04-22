@@ -1,7 +1,7 @@
 import { DetailQuote } from "./detail-quote.interface";
 
 export interface Quote {
-  id: number;
+  id: string;
   createDate: string;
   subtotal: number;
   tax: number;

@@ -1,42 +1,42 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { CustomerService } from '../../services/customer.service';
-import { Customer } from '../../interfaces/customer.interface';
+import { ClientService } from '../../services/client.service';
+import { Client } from '../../interfaces/client.interface';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'create-customer',
-  templateUrl: './create-customer.component.html',
+  selector: 'create-client',
+  templateUrl: './create-client.component.html',
   styles: [
   ]
 })
 
-export class CreateCustomerComponent {
+export class CreateClientComponent {
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private customerService: CustomerService
+    private clientService: ClientService
   ) { }
 
   // orders: Order[] = [];
   //userLogged = 0;
 
-  public customerForm: FormGroup = this.fb.group({
+  public clientForm: FormGroup = this.fb.group({
     name: [],
     email: [],
     phone: []
   });
 
-  createCustomer() {
-    this.customerService.createCustomer(this.customerForm.value)
+  createClient() {
+    this.clientService.createClient(this.clientForm.value)
       .subscribe(
         resp => {
           console.log(resp)
         },
         error => {
           if (error.status === 400){
-            this.customerForm.setErrors({ alreadyRegister: true})
+            this.clientForm.setErrors({ alreadyRegister: true})
             console.log("desde excepcion error cliente ya existe")
           }
         }
@@ -45,9 +45,9 @@ export class CreateCustomerComponent {
 
 
   search(term: string):void {
-    this.customerService.searchCustomers(term)
-      .subscribe(customers => {
-        console.log(customers)
+    this.clientService.searchClients(term)
+      .subscribe(clients => {
+        console.log(clients)
         // this.customers = customers;
       });
   }

@@ -30,7 +30,7 @@ export class ClientCardComponent implements OnInit {
       })
     }
 
-    onCustomerUpdated(success: boolean) {
+    onClientUpdated(success: boolean) {
       if (success) {
         this.loadOrderDetails(this.order.id);
       }

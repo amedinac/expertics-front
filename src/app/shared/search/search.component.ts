@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output, OnInit, ViewChild, ElementRef }
 import { of, fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { CustomerService } from '../../services/customer.service';
+import { ClientService } from '../../services/client.service';
 import { HttpClient } from '@angular/common/http';
-import { Customer } from 'src/app/interfaces/customer.interface';
+import { Client } from 'src/app/interfaces/client.interface';
 import { initFlowbite } from 'flowbite';
 
 
@@ -15,32 +15,29 @@ import { initFlowbite } from 'flowbite';
 
 export class SearchComponent implements OnInit {
   searchQuery = new FormControl('')
-  customerSelected: any = '';
+  clientSelected: any = '';
   query = this.searchQuery.value?.toString()
-  customers: Customer[] = [];
-  searchQueryChanged: Subject<string> = new Subject<string>();
+  clients: Client[] = [];
+  // searchQueryChanged: Subject<string> = new Subject<string>();
 
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private customerService: CustomerService
+    private clientService: ClientService
   ) { }
 
   search(searchQuery: any): void {
-    this.searchQueryChanged.next(searchQuery);
-    console.log(searchQuery);
-    this.customerService.searchCustomers(searchQuery)
-    .subscribe((customers: Customer[]) => {
-      this.customers = customers;
-      console.log("desde search", this.customers)
+    // this.searchQueryChanged.next(searchQuery);
+    this.clientService.searchClients(searchQuery)
+    .subscribe((clients: Client[]) => {
+      this.clients = clients;
     })
   }
 
-  getCustomerSelected(){
-    const id = Number(this.customerSelected)
-    this.customerService.selectCustomer(id)
-    console.log("Customer selected is", id)
+  getClientSelected(){
+    const id = Number(this.clientSelected)
+    this.clientService.selectClient(id)
   }
 
   ngOnInit(): void {

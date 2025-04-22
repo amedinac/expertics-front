@@ -11,15 +11,15 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
-import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
+import { CreateClientComponent } from './components/create-client/create-client.component';
+import { UpdateClientComponent } from './components/update-client/update-client.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateOrderComponent,
-    CreateCustomerComponent,
+    CreateClientComponent,
   ],
   imports: [
     BrowserModule,
