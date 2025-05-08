@@ -13,29 +13,35 @@ import { PdfService } from 'src/app/services/pdf.service';
 
 export class OrderDetailComponent implements OnInit {
 
-  //Typar correctamente.
-
-  @Input() order: any;
+  orderId: string = '';
+  order!: Order;
 
   constructor(
-    private orderService: OrdersService,
+    private ordersService: OrdersService,
     private activatedRoute: ActivatedRoute,
     private pdfService: PdfService
-  ){}
+  ){
+    this.orderId = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    this.ordersService.getOrder(this.orderId);
+  }
 
 
   ngOnInit(): void {
-    this.order = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.getOrder(this.order);
+    this.ordersService.getOrder(this.orderId).subscribe((order) => {
+      this.order = order;
+      console.log('Desde order-detail',order);
+    });
+    // this.getCurrentOrder();
   }
 
 
-  getOrder(id: string){
-    this.orderService.getOrder(id).subscribe((response) => {
-      console.log(response)
-      this.order = response;
-    })
-  }
+  // getCurrentOrder(){
+  //   this.ordersService.order$.subscribe((order) => {
+  //     this.order = order;
+  //     console.log('Desde order-detail',order);
+  //   }
+  //   )
+  // }
 
   getPdf(): void {
     this.pdfService.getPdf(this.order.id).subscribe({
@@ -51,12 +57,12 @@ export class OrderDetailComponent implements OnInit {
 
   onCustomerUpdated(success: boolean) {
     if (success) {
-      this.loadOrderDetails(this.order.id);
+      this.loadOrderDetails(this.order.id.toString());
     }
   }
 
   loadOrderDetails(orderId: string) {
-    this.orderService.getOrder(orderId).subscribe(
+    this.ordersService.getOrder(orderId).subscribe(
       (updatedOrder) => {
         this.order = updatedOrder;
       }

@@ -1,3 +1,7 @@
+import { Client } from "./client.interface";
+import { Quote } from "./quote.interface";
+import { User } from "./user.interface";
+
 export interface Order {
   id: number;
   serial: string;
@@ -6,8 +10,9 @@ export interface Order {
   vmi: string;
   fail: string;
   createdDate?: Date;
-  user: number;
-  client: number;
+  user: User;
+  client: Client;
+  quote: Quote;
 
   //updatedAt: Date;
   //__v: number;

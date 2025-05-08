@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { Order } from '../interfaces/order.interface';
 
 interface ApiResponse<T> {
@@ -15,22 +15,26 @@ interface ApiResponse<T> {
   providedIn: 'root'
 })
 export class OrdersService {
+
   baseUrl = 'http://localhost:3000/api/orders';
+  private orderSubject = new BehaviorSubject<Order | null>(null);
+  public order$ = this.orderSubject.asObservable();
 
   orderId$!: string;
 
 
   constructor(private http: HttpClient) { }
 
-  // getOrders(limit: number, offset: number): Observable<Order[]> {
-  //   const url = `${this.baseUrl}/?limit=${limit}&offset=${offset}`
-  //   return this.http.get<Order[]>(url)
-  // }
-
-  getOrder(id: string) {
+  getOrder(id: string): Observable<Order> {
     const url = `${this.baseUrl}/${id}`
-    this.orderId$ = id;
-    return this.http.get(url);
+    return this.http.get<Order>(url).pipe(
+      tap((order) => {
+        this.orderSubject.next(order);
+        this.order$.subscribe((order) => {
+          console.log('Desde order.service', order);
+        })
+      })
+    );
   }
 
   getOrders(limit: number, offset: number): Observable<ApiResponse<Order>> {
