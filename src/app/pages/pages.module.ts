@@ -10,7 +10,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { OrdersPageComponent } from './orders-page/orders-page.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { UpdateClientComponent } from '../components/update-client/update-client.component';
-import { QuoteComponent } from './quote/quote.component';
+import { QuoteComponent } from '../components/quote/quote.component';
 import { AddPartComponent } from '../components/add-part/add-part.component';
 import { DeviceCardComponent } from '../components/device-card/device-card.component';
 import { ClientCardComponent } from '../components/client-card/client-card.component';

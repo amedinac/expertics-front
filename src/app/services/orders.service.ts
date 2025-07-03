@@ -31,7 +31,6 @@ export class OrdersService {
       tap((order) => {
         this.orderSubject.next(order);
         this.order$.subscribe((order) => {
-          console.log('Desde order.service', order);
         })
       })
     );

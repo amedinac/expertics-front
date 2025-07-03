@@ -13,7 +13,4 @@ export interface Order {
   user: User;
   client: Client;
   quote: Quote;
-
-  //updatedAt: Date;
-  //__v: number;
 }

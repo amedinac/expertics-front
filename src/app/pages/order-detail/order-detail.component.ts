@@ -22,7 +22,6 @@ export class OrderDetailComponent implements OnInit {
     private pdfService: PdfService
   ){
     this.orderId = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.ordersService.getOrder(this.orderId);
   }
 
 

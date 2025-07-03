@@ -2,7 +2,7 @@
 
 <div class="flex flex-col mt-5 mx-20 max-w-screen-2xl">
   <shared-header/>
-  <div class="flex flex-col mb-10 sm:px-0">
+  <div *ngIf="order" class="flex flex-col mb-10 sm:px-0">
     <p class="text-2xl font-semibold text-gray-900 ml-auto">Order #{{order.id}}</p>
     <p class="text-sm/6 text-gray-500 mb-2 ml-auto">Received at: {{ order.createdDate | date:'dd/MM/yy hh:mma':'-1200'}}
     </p>
@@ -25,15 +25,15 @@
   <div class="flex justify-between">
 
     <!-- Device info -->
-    <device-card/>
+    <device-card [order]="order"/>
 
      <!-- Client info -->
-    <client-card/>
+    <client-card [order]="order"/>
 
   </div>
 
 
-  <quote/>
+  <quote *ngIf="order" [order]="order"/>
 
 
 

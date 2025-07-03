@@ -12,44 +12,43 @@ import { QuoteService } from 'src/app/services/quote.service';
 })
 export class QuoteComponent implements OnInit {
 
-  orderId: string = '';
-  order!: Order;
+  @Input() order!: Order;
 
-  public quote!: Quote;
-  public quoteId!: string;
-  public subtotal!: number;
-  public tax!: number;
-  public total!: number;
-  public detailsQuote!: DetailQuote[];
+  // orderId: string = '';
+
+  // public quote!: Quote;
+  // public quoteId!: string;
+  // public subtotal!: number;
+  // public tax!: number;
+  // public total!: number;
+  // public detailsQuote!: DetailQuote[];
 
   constructor(
     private quoteService: QuoteService,
     private ordersService: OrdersService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.orderId = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.ordersService.getOrder(this.orderId);
-    setTimeout(() => this.getQuote(), 1000);
-
+     console.log("Order recibido:", this.order.quote.id); // ¿Llega con quote?
 
   }
 
 
-  getQuote() {
-    // const quoteid = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.quoteService.getQuote(this.order.quote.id).subscribe(data => {
 
-      this.quote = data as Quote;
-      this.quoteId = data.id;
-      this.detailsQuote = data.detailsQuote;
-      this.subtotal = data.subtotal;
-      this.tax = data.tax;
-      this.total = data.total;
-      console.log(this.quote);
-    })
-  }
+  // getQuote() {
+  //   // const quoteid = this.activatedRoute.snapshot.paramMap.get('id') || '';
+  //   this.quoteService.getQuote(this.order.quote.id).subscribe(data => {
+
+  //     this.quote = data as Quote;
+  //     this.quoteId = data.id;
+  //     this.detailsQuote = data.detailsQuote;
+  //     this.subtotal = data.subtotal;
+  //     this.tax = data.tax;
+  //     this.total = data.total;
+  //     console.log(this.quote);
+  //   })
+  // }
 
   deleteDetailQuote(id:number) {
     this.quoteService.deleteQuoteDetail(id).subscribe({

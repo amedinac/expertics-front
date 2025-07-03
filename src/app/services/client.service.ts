@@ -11,9 +11,10 @@ export class ClientService {
   baseUrl = 'http://localhost:3000/api/clients';
 
   clientId$!: any;
+  client: Client = { name: '', email: '', phone: '' };
   clientsList$!: any;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   // get customer(): string {
   //   return localStorage.getItem('customer') || '';
@@ -32,6 +33,16 @@ export class ClientService {
       'Desde selectClient en clientService - Client',
       this.clientId$
     );
+    this.router.navigateByUrl('/orders/new');
+  }
+
+  loadClient(clientId: any) {
+    const client = this.http.get<Client>(`${this.baseUrl}/${clientId}`);
+    client.subscribe((data) => {
+      this.client = data;
+      console.log('Selected Client:', this.client);
+    });
+
     this.router.navigateByUrl('/orders/new');
   }
 

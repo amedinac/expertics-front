@@ -16,6 +16,7 @@ export class CreateOrderComponent implements OnInit {
 
   orders: Order[] = [];
   clientId$ = this.clientService.clientId$;
+  client = this.clientService.client; // Inicializar el cliente desde el servicio
 
   constructor(
     private ordersService: OrdersService,
@@ -25,7 +26,13 @@ export class CreateOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("desde ngOninit create order",this.clientId$)
+    console.log('Client:', this.client);
+    // Cargar el cliente seleccionado al iniciar el componente
+    if (this.clientId$) {
+      this.clientService.loadClient(this.clientId$);
+    } else {
+      console.error('No client ID found');
+    }
   }
 
 

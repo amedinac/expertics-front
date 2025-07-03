@@ -8,7 +8,7 @@ import { CreateOrderComponent } from './components/create-order/create-order.com
 import { CreateClientComponent } from './components/create-client/create-client.component';
 import { LoginComponent } from './auth/login/login.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
-import { QuoteComponent } from './pages/quote/quote.component';
+import { QuoteComponent } from './components/quote/quote.component';
 
 const routes: Routes = [
   //usar para redirigir a /login y usar child routes.

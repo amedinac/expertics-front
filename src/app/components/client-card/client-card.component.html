@@ -12,11 +12,11 @@
       </svg>
     </div>
 
-    <div class="flex-grow pl-10">
+    <div *ngIf="order" class="flex-grow pl-10">
 
-      <h2 class="text-gray-900 text-base title-font font-medium">{{order.client?.name}}</h2>
-      <p class="text-gray-600 leading-relaxed text-sm">{{order.client?.email}}</p>
-      <p class="text-gray-600 leading-relaxed text-sm">{{order.client?.phone}}</p>
+      <h2 class="text-gray-900 text-base title-font font-medium">{{order.client.name}}</h2>
+      <p class="text-gray-600 leading-relaxed text-sm">{{order.client.email}}</p>
+      <p class="text-gray-600 leading-relaxed text-sm">{{order.client.phone}}</p>
 
     </div>
 
